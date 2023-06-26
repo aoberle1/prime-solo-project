@@ -16,8 +16,8 @@ function MyCellarPage () {
         dispatch({type: 'DELETE_WINE', payload: id });
     }
 
-    function handleEdit(bottle) {
-        dispatch({ type: 'EDIT_DETAILS'});
+    function handleEdit(id) {
+        dispatch({ type: 'EDIT_DETAILS', payload: id});
         history.push('/edit');
     }
 

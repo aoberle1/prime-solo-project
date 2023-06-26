@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -7,22 +7,42 @@ function EditDetailsPage () {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const details = useSelector(store => store.details);
 
-    const [newVineyard, setNewVineyard] = useState('');
-    const [newVintage, setNewVintage] = useState(0);
-    const [newGrape, setNewGrape] = useState(0);
-    const [newPrice, setNewPrice] = useState(0);
-    const [newPlace_bought, setNewPlace_Bought] = useState('');
-    const [newNotes, setNewNotes] = useState('');
-    const [newRating, setNewRating] = useState(0);
+    const [newVineyard, setNewVineyard] = useState(details.vineyard);
+    const [newVintage, setNewVintage] = useState(details.vintage);
+    const [newGrape, setNewGrape] = useState(details.grape);
+    const [newPrice, setNewPrice] = useState(details.price);
+    const [newPlace_bought, setNewPlace_Bought] = useState(details.place_bought);
+    const [newNotes, setNewNotes] = useState(details.notes);
+    const [newRating, setNewRating] = useState(details.rating);
+
+    function submitChanges(event){
+        event.preventDefault();
+
+        let newDetails = {
+            newVineyard,
+            newVintage,
+            newGrape,
+            newPrice,
+            newPlace_bought,
+            newNotes,
+            newRating
+        };
+        dispatch({ type: 'SUBMIT_CHANGES', payload: newDetails})
+    }
+
+    function runTest() {
+        console.log('values of details are:', details);
+    }
 
     return (
         <div>
-        <form onSubmit={(event) => editWine(event)}>
+        <form onSubmit={(event) => submitChanges(event)}>
             <label>Vineyard / Brand *</label>
             <input
                 type="text"
-                value={vineyard}
+                value={newVineyard}
                 onChange={(event) => setNewVineyard(event.target.value)}
                 required
             />
@@ -30,7 +50,7 @@ function EditDetailsPage () {
             <label>Vintage *</label>
             <input
                 type="number"
-                value={vintage}
+                value={newVintage}
                 onChange={(event) => setNewVintage(event.target.value)}
                 max="2023"
                 maxLength="4"
@@ -38,7 +58,7 @@ function EditDetailsPage () {
             />
             <br/>
             <label>Grape Name *</label>
-            <select required value={grape} onChange={(event) => setNewGrape(event.target.value)}>
+            <select required value={newGrape} onChange={(event) => setNewGrape(event.target.value)}>
                 <option value={0}> --Select a category </option>
                 <option value={1}> Cabernet Sauvignon</option>
                 <option value={2}> Merlot</option>
@@ -57,21 +77,21 @@ function EditDetailsPage () {
             <label>Price</label>
             <input
                 type="number"
-                value={price}
+                value={newPrice}
                 onChange={(event) => setNewPrice(event.target.value)}
             />
             <br/>
             <label>Location Purchased</label>
             <input
                 type="text"
-                value={place_bought}
+                value={newPlace_bought}
                 onChange={(event) => setNewPlace_Bought(event.target.value)}
             />
             <br/>
             <label>Tasting Notes</label>
             <input
                 type="text"
-                value={notes}
+                value={newNotes}
                 onChange={(event) => setNewNotes(event.target.value)}
             />
             <br/>
@@ -80,12 +100,13 @@ function EditDetailsPage () {
                 type="number"
                 min="0"
                 max="10"
-                value={rating}
+                value={newRating}
                 onChange={(event) => setNewRating(event.target.value)}
             />
             <br/>
             <input type='submit' value='Submit Your Edits!'></input>
         </form>
+        <button onClick={() => runTest()}>TESTER</button>
         </div>
     )
 

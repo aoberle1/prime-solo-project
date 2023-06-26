@@ -64,8 +64,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 })
 
 router.get('/details/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in details GET, req.params is:', req.params);
-    console.log('in details GET, req.body is:', req.body);
+    console.log('in details GET, req.params.id is:', req.params.id);
 
     const queryText = `SELECT "wine"."id", "vineyard", "vintage", "grape"."name", "price", "place_bought", "notes", "rating" FROM "wine"
     JOIN "user" ON "user"."id" = "wine"."user_id"

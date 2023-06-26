@@ -1,6 +1,6 @@
 const detailsReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_WINE':
+        case 'SET_DETAILS':
             return action.payload;
         default:
             return state;
