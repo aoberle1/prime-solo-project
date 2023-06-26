@@ -1,10 +1,13 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 
 function AddWinePage() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const [vineyard, setVineyard] = useState('');
     const [vintage, setVintage] = useState(0);
@@ -18,6 +21,18 @@ function AddWinePage() {
         event.preventDefault();
         console.log('Values to be submitted are:', vineyard, vintage, grape, price, place_bought, notes, rating);
 
+        let newWine = {
+            vineyard,
+            vintage,
+            grape,
+            price,
+            place_bought,
+            notes,
+            rating
+        };
+        console.log('newWine being submitted is:', newWine)
+        dispatch({ type: 'SUBMIT_WINE', payload: newWine});
+        // history.push('/cellar');
     }
 
 
