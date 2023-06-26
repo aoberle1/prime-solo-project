@@ -12,7 +12,9 @@ function MyCellarPage () {
 
     const cellar = useSelector(store => store.myWine);
 
-
+    function deleteWine(id) {
+        dispatch({type: 'DELETE_WINE', payload: id });
+    }
 
     useEffect(() => {
         dispatch({ type: 'FETCH_WINE'});
@@ -42,7 +44,7 @@ function MyCellarPage () {
                             <td>{bottle.place_bought}</td>
                             <td>{bottle.notes}</td>
                             <td>{bottle.rating}</td>
-                            <td><button>DELETE</button></td>
+                            <td><button onClick={() => deleteWine(bottle.id)}>DELETE</button></td>
                             <td><button>EDIT</button></td>
                         </tr>
                     ))}
