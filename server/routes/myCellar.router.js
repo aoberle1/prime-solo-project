@@ -63,4 +63,22 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         })
 })
 
+router.get('/details/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in details GET, req.params is:', req.params);
+    console.log('in details GET, req.body is:', req.body);
+
+    const queryText = `SELECT "wine"."id", "vineyard", "vintage", "grape"."name", "price", "place_bought", "notes", "rating" FROM "wine"
+    JOIN "user" ON "user"."id" = "wine"."user_id"
+    JOIN "grape" ON "grape"."id" = "wine"."grape_id"
+    WHERE "wine"."id" = $1;`
+
+    pool.query(queryText, [req.params.id])
+    .then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('error in GET details in server:', error);
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router  

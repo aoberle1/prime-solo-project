@@ -22,6 +22,6 @@ export default function* rootSaga() {
     myCellarSaga(),
     submitWineSaga(),
     deleteWineSaga(),
-    editWineSaga
+    editWineSaga(),
   ]);
 }
