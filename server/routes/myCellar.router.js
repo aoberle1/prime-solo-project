@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     JOIN "grape" ON "grape"."id" = "wine"."grape_id"
     WHERE "user_id" = $1;`;
     console.log('req.user.id in cellar GET:', req.user.id)
-    pool.query(queryText, req.user.id)
+    pool.query(queryText, [req.user.id])
     .then(result => {
         res.send(result.rows);
     })
