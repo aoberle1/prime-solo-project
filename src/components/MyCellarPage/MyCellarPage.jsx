@@ -14,7 +14,7 @@ function MyCellarPage () {
 
     return (
         <div>
-            <table>
+            <table className='center'>
                 <thead>
                     <tr>
                         <th>Vinyard</th>
