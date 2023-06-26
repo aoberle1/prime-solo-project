@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import MyCellarPage from '../MyCellarPage/MyCellarPage';
 
 import './App.css';
 
@@ -58,6 +59,13 @@ function App() {
             path="/user"
           >
             <UserPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/cellar"
+          >
+            <MyCellarPage />
           </ProtectedRoute>
 
           <ProtectedRoute
