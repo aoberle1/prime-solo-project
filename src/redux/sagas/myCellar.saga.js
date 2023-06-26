@@ -3,7 +3,7 @@ import {put, takeLatest} from 'redux-saga/effects'
 
 function* fetchWine() {
     try {
-        const myWine = yield axios.get('/api/wine');
+        const myWine = yield axios.get('/api/myCellar');
         console.log('wine data from axios.get:', myWine.data);
         yield put({ type: 'SET_WINE', payload: myWine.data})
     } catch (error) {

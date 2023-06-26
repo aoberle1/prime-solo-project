@@ -7,6 +7,8 @@ import './MyCellarPage.css'
 function MyCellarPage () {
 
     const dispatch = useDispatch();
+    const cellar = useSelector(store => store.myWine);
+
 
     useEffect(() => {
         dispatch({ type: 'FETCH_WINE'});
@@ -17,7 +19,7 @@ function MyCellarPage () {
             <table className='center'>
                 <thead>
                     <tr>
-                        <th>Vinyard</th>
+                        <th>Vineyard</th>
                         <th>Vintage</th>
                         <th>Grape</th>
                         <th>Price</th>
@@ -27,7 +29,17 @@ function MyCellarPage () {
                     </tr>
                 </thead>
                 <tbody>
-
+                    {cellar.map(bottle => (
+                        <tr key={bottle.id}>
+                            <td>{bottle.vineyard}</td>
+                            <td>{bottle.vintage}</td>
+                            <td>{bottle.name}</td>
+                            <td>{bottle.price}</td>
+                            <td>{bottle.place_bought}</td>
+                            <td>{bottle.notes}</td>
+                            <td>{bottle.rating}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
