@@ -38,10 +38,14 @@ function MyCellarPage () {
                             <td>{bottle.place_bought}</td>
                             <td>{bottle.notes}</td>
                             <td>{bottle.rating}</td>
+                            <td><button>DELETE</button></td>
+                            <td><button>EDIT</button></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+            <br></br>
+            <button>ADD SOME WINE!</button>
         </div>
     )
 }
