@@ -12,10 +12,10 @@ function AddWinePage() {
     const [vineyard, setVineyard] = useState('');
     const [vintage, setVintage] = useState(0);
     const [grape, setGrape] = useState(0);
-    const [price, setPrice] = useState('');
+    const [price, setPrice] = useState(0);
     const [place_bought, setPlace_Bought] = useState('');
     const [notes, setNotes] = useState('');
-    const [rating, setRating] = useState('');
+    const [rating, setRating] = useState(0);
 
     function submitWine (event) {
         event.preventDefault();
@@ -32,7 +32,7 @@ function AddWinePage() {
         };
         console.log('newWine being submitted is:', newWine)
         dispatch({ type: 'SUBMIT_WINE', payload: newWine});
-        // history.push('/cellar');
+        history.push('/cellar');
     }
 
 
@@ -97,7 +97,7 @@ function AddWinePage() {
             <label>My Rating (1-10)</label>
             <input
                 type="number"
-                min="1"
+                min="0"
                 max="10"
                 value={rating}
                 onChange={(event) => setRating(event.target.value)}
