@@ -22,7 +22,7 @@ function AddWinePage() {
 
 
     return (
-        <form onSubmit={(event) => submitWine}>
+        <form onSubmit={(event) => submitWine(event)}>
             <label>Vineyard / Brand *</label>
             <input
                 type="text"
