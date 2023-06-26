@@ -2,12 +2,16 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import './MyCellarPage.css'
+import { useHistory } from 'react-router-dom';
 
 
 function MyCellarPage () {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
     const cellar = useSelector(store => store.myWine);
+
 
 
     useEffect(() => {
@@ -19,7 +23,7 @@ function MyCellarPage () {
             <table className='center'>
                 <thead>
                     <tr>
-                        <th>Vineyard</th>
+                        <th>Vineyard / Brand</th>
                         <th>Vintage</th>
                         <th>Grape</th>
                         <th>Price</th>
@@ -45,7 +49,7 @@ function MyCellarPage () {
                 </tbody>
             </table>
             <br></br>
-            <button>ADD SOME WINE!</button>
+            <button onClick={() => history.push('/add')}>ADD SOME WINE!</button>
         </div>
     )
 }
