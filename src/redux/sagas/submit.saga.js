@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {put, takeLatest} from 'redux-saga/effects'
 
-function* addWine (action) {
+function* submitWine (action) {
     try {
       console.log( 'action.payload is:', action.payload);
       yield axios.post('/api/myCellar', action.payload);
@@ -11,8 +11,8 @@ function* addWine (action) {
     };
   };
 
-function* addWineSaga() {
-    yield takeLatest('ADD_WINE', addWine)
+function* submitWineSaga() {
+    yield takeLatest('SUBMIT_WINE', submitWine)
 }
 
-export default addWineSaga;
+export default submitWineSaga;
