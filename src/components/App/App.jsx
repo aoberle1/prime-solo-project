@@ -23,6 +23,7 @@ import MyCellarPage from '../MyCellarPage/MyCellarPage';
 
 import './App.css';
 import AddWinePage from '../AddWinePage/AddWinePage';
+import EditDetailsPage from '../EditDetailsPage/EditDetailsPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -74,6 +75,13 @@ function App() {
             path="/add"
           >
             <AddWinePage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/edit"
+          >
+            <EditDetailsPage />
           </ProtectedRoute>
 
           <ProtectedRoute

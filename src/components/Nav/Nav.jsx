@@ -36,6 +36,10 @@ function Nav() {
               Add Wine
             </Link>
 
+            <Link className="navLink" to="/edit">
+              Edit Wine
+            </Link>
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>

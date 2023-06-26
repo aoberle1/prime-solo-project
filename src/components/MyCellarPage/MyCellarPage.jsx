@@ -16,6 +16,11 @@ function MyCellarPage () {
         dispatch({type: 'DELETE_WINE', payload: id });
     }
 
+    function handleEdit(bottle) {
+        dispatch({ type: 'EDIT_DETAILS'});
+        history.push('/edit');
+    }
+
     useEffect(() => {
         dispatch({ type: 'FETCH_WINE'});
     }, [])
@@ -46,7 +51,7 @@ function MyCellarPage () {
                             <td>{bottle.notes}</td>
                             <td>{bottle.rating}</td>
                             <td><button onClick={() => deleteWine(bottle.id)}>DELETE</button></td>
-                            <td><button onClick={() => handleEdit}>EDIT</button></td>
+                            <td><button onClick={() => handleEdit(bottle.id)}>EDIT</button></td>
                         </tr>
                     ))}
                 </tbody>
