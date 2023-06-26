@@ -5,8 +5,8 @@ const {
     rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-router.get('/', (req, res) => {
-    const queryText = `SELECT "vineyard", "vintage", "grape"."name", "price", "place_bought", "notes", "rating" FROM "wine"
+router.get('/', rejectUnauthenticated, (req, res) => {
+    const queryText = `SELECT * FROM "wine"
     JOIN "user" ON "user"."id" = "wine"."user_id"
     JOIN "grape" ON "grape"."id" = "wine"."grape_id"
     WHERE "user_id" = $1;`;
