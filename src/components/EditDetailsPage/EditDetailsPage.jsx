@@ -3,48 +3,27 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-
-function AddWinePage() {
+function EditDetailsPage () {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [vineyard, setVineyard] = useState('');
-    const [vintage, setVintage] = useState(0);
-    const [grape, setGrape] = useState(0);
-    const [price, setPrice] = useState(0);
-    const [place_bought, setPlace_Bought] = useState('');
-    const [notes, setNotes] = useState('');
-    const [rating, setRating] = useState(0);
-
-    function submitWine (event) {
-        event.preventDefault();
-        console.log('Values to be submitted are:', vineyard, vintage, grape, price, place_bought, notes, rating);
-
-        let newWine = {
-            vineyard,
-            vintage,
-            grape,
-            price,
-            place_bought,
-            notes,
-            rating
-        };
-        console.log('newWine being submitted is:', newWine)
-        dispatch({ type: 'SUBMIT_WINE', payload: newWine});
-        history.push('/cellar');
-    }
-
+    const [newVineyard, setNewVineyard] = useState('');
+    const [newVintage, setNewVintage] = useState(0);
+    const [newGrape, setNewGrape] = useState(0);
+    const [newPrice, setNewPrice] = useState(0);
+    const [newPlace_bought, setNewPlace_Bought] = useState('');
+    const [newNotes, setNewNotes] = useState('');
+    const [newRating, setNewRating] = useState(0);
 
     return (
         <div>
-            <h3>Enter New Wine Information Here!</h3>
-        <form onSubmit={(event) => submitWine(event)}>
+        <form onSubmit={(event) => editWine(event)}>
             <label>Vineyard / Brand *</label>
             <input
                 type="text"
                 value={vineyard}
-                onChange={(event) => setVineyard(event.target.value)}
+                onChange={(event) => setNewVineyard(event.target.value)}
                 required
             />
             <br/>
@@ -52,14 +31,14 @@ function AddWinePage() {
             <input
                 type="number"
                 value={vintage}
-                onChange={(event) => setVintage(event.target.value)}
+                onChange={(event) => setNewVintage(event.target.value)}
                 max="2023"
                 maxLength="4"
                 required
             />
             <br/>
             <label>Grape Name *</label>
-            <select required value={grape} onChange={(event) => setGrape(event.target.value)}>
+            <select required value={grape} onChange={(event) => setNewGrape(event.target.value)}>
                 <option value={0}> --Select a category </option>
                 <option value={1}> Cabernet Sauvignon</option>
                 <option value={2}> Merlot</option>
@@ -79,21 +58,21 @@ function AddWinePage() {
             <input
                 type="number"
                 value={price}
-                onChange={(event) => setPrice(event.target.value)}
+                onChange={(event) => setNewPrice(event.target.value)}
             />
             <br/>
             <label>Location Purchased</label>
             <input
                 type="text"
                 value={place_bought}
-                onChange={(event) => setPlace_Bought(event.target.value)}
+                onChange={(event) => setNewPlace_Bought(event.target.value)}
             />
             <br/>
             <label>Tasting Notes</label>
             <input
                 type="text"
                 value={notes}
-                onChange={(event) => setNotes(event.target.value)}
+                onChange={(event) => setNewNotes(event.target.value)}
             />
             <br/>
             <label>My Rating (1-10)</label>
@@ -102,13 +81,14 @@ function AddWinePage() {
                 min="0"
                 max="10"
                 value={rating}
-                onChange={(event) => setRating(event.target.value)}
+                onChange={(event) => setNewRating(event.target.value)}
             />
             <br/>
-            <input type='submit' value='Add Bottle To Your Cellar!'></input>
+            <input type='submit' value='Submit Your Edits!'></input>
         </form>
         </div>
     )
+
 }
 
-export default AddWinePage;
+export default EditDetailsPage;

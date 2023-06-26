@@ -21,7 +21,8 @@ function MyCellarPage () {
     }, [])
 
     return (
-        <div>
+        <div className='center'>
+            <h3 className='center'>My Cellar</h3>
             <table className='center'>
                 <thead>
                     <tr>
@@ -45,7 +46,7 @@ function MyCellarPage () {
                             <td>{bottle.notes}</td>
                             <td>{bottle.rating}</td>
                             <td><button onClick={() => deleteWine(bottle.id)}>DELETE</button></td>
-                            <td><button>EDIT</button></td>
+                            <td><button onClick={() => handleEdit}>EDIT</button></td>
                         </tr>
                     ))}
                 </tbody>
