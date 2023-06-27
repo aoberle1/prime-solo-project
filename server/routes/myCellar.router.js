@@ -10,7 +10,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     FROM "wine"
     JOIN "user" ON "user"."id" = "wine"."user_id"
     JOIN "grape" ON "grape"."id" = "wine"."grape_id"
-    WHERE "user_id" = $1;`;
+    WHERE "user_id" = $1
+    ORDER BY "wine"."id" ASC;`;
     console.log('req.user.id in cellar GET:', req.user.id)
     pool.query(queryText, [req.user.id])
         .then(result => {
@@ -53,7 +54,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in DELETE, req.body is:', req.body);
 
     const queryText = `DELETE FROM "wine" WHERE "id" = $1;`;
-    
+
     pool.query(queryText, [req.params.id])
         .then(response => {
             res.sendStatus(200);
@@ -61,23 +62,59 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
             console.log('error on server in DELETE:', error)
             res.sendStatus(500);
         })
-})
+});
 
 router.get('/details/:id', rejectUnauthenticated, (req, res) => {
     console.log('in details GET, req.params.id is:', req.params.id);
+    console.log('in details GET, req.body is:', req.body);
 
-    const queryText = `SELECT "wine"."id", "vineyard", "vintage", "grape"."name", "price", "place_bought", "notes", "rating" FROM "wine"
+    const queryText = `SELECT "wine"."id", "vineyard", "vintage", "grape_id", "price", "place_bought", "notes", "rating" FROM "wine"
     JOIN "user" ON "user"."id" = "wine"."user_id"
     JOIN "grape" ON "grape"."id" = "wine"."grape_id"
-    WHERE "wine"."id" = $1;`
+    WHERE "wine"."id" = $1;`;
 
     pool.query(queryText, [req.params.id])
-    .then(result => {
-        res.send(result.rows);
-    }).catch(error => {
-        console.log('error in GET details in server:', error);
-        res.sendStatus(500);
-    })
+        .then(result => {
+            res.send(result.rows);
+        }).catch(error => {
+            console.log('error in GET details in server:', error);
+            res.sendStatus(500);
+        })
+});
+
+router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in edit PUT, req.params.id is:', req.params.id);
+    console.log('in edit PUT, req.body is:', req.body);
+
+    const dataPackage = [
+        req.body.vineyard,
+        req.body.vintage,
+        req.body.grape_id,
+        req.body.price,
+        req.body.place_bought,
+        req.body.notes,
+        req.body.rating,
+        req.params.id
+    ]
+
+
+    const queryText = `UPDATE "wine" 
+    SET "vineyard" = $1,
+        "vintage" = $2,
+        "grape_id" = $3,
+        "price" = $4,
+        "place_bought" = $5,
+        "notes" = $6,
+        "rating" = $7 
+    WHERE id = $8;`;
+
+    pool.query(queryText, dataPackage)
+        .then(result => {
+            res.sendStatus(200);
+        }).catch(error => {
+            console.log('error in PUT in server:', error);
+            res.sendStatus(500);
+        })
 })
 
 module.exports = router  

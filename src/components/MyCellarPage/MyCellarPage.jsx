@@ -2,7 +2,8 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import './MyCellarPage.css'
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+
 
 
 function MyCellarPage () {
@@ -18,7 +19,7 @@ function MyCellarPage () {
 
     function handleEdit(id) {
         dispatch({ type: 'EDIT_DETAILS', payload: id});
-        history.push('/edit');
+        // history.push('/edit');
     }
 
     useEffect(() => {
@@ -51,12 +52,13 @@ function MyCellarPage () {
                             <td>{bottle.notes}</td>
                             <td>{bottle.rating}</td>
                             <td><button onClick={() => deleteWine(bottle.id)}>DELETE</button></td>
-                            <td><button onClick={() => handleEdit(bottle.id)}>EDIT</button></td>
+                            <td onClick={() => handleEdit(bottle.id)}><Link to="/edit"><button>EDIT</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <br></br>
+
             <button onClick={() => history.push('/add')}>ADD SOME WINE!</button>
         </div>
     )
