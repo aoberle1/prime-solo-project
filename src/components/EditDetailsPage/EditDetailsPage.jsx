@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
@@ -9,32 +9,42 @@ function EditDetailsPage () {
     const history = useHistory();
     const details = useSelector(store => store.details);
 
-    const [newVineyard, setNewVineyard] = useState(details.vineyard);
-    const [newVintage, setNewVintage] = useState(details.vintage);
-    const [newGrape, setNewGrape] = useState(details.grape);
-    const [newPrice, setNewPrice] = useState(details.price);
-    const [newPlace_bought, setNewPlace_Bought] = useState(details.place_bought);
-    const [newNotes, setNewNotes] = useState(details.notes);
-    const [newRating, setNewRating] = useState(details.rating);
+    console.log('details is:', details);
+
+    const [newVineyard, setNewVineyard] = useState('');
+    const [newVintage, setNewVintage] = useState(0);
+    const [newGrape, setNewGrape] = useState(0);
+    const [newPrice, setNewPrice] = useState(0);
+    const [newPlace_bought, setNewPlace_Bought] = useState('');
+    const [newNotes, setNewNotes] = useState('');
+    const [newRating, setNewRating] = useState(0);
 
     function submitChanges(event){
-        event.preventDefault();
-
         let newDetails = {
-            newVineyard,
-            newVintage,
-            newGrape,
-            newPrice,
-            newPlace_bought,
-            newNotes,
-            newRating
+            id: details.id,
+            vineyard: newVineyard,
+            vintage: newVintage,
+            grape_id: newGrape,
+            price: newPrice,
+            place_bought: newPlace_bought,
+            notes: newNotes,
+            rating: newRating
         };
-        dispatch({ type: 'SUBMIT_CHANGES', payload: newDetails})
+        console.log('values of newDetails is:', newDetails);
+        dispatch({ type: 'SUBMIT_CHANGES', payload: newDetails});
+        history.push('/cellar');
     }
 
-    function runTest() {
-        console.log('values of details are:', details);
-    }
+    useEffect(() => {
+        setNewVineyard(details.vineyard);
+        setNewVintage(details.vintage);
+        setNewGrape(details.grape_id);
+        setNewPrice(details.price);
+        setNewPlace_Bought(details.place_bought);
+        setNewNotes(details.notes);
+        setNewRating(details.rating);
+    }, [details])
+    
 
     return (
         <div>
@@ -106,7 +116,6 @@ function EditDetailsPage () {
             <br/>
             <input type='submit' value='Submit Your Edits!'></input>
         </form>
-        <button onClick={() => runTest()}>TESTER</button>
         </div>
     )
 
