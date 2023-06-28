@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import CancelButton from '../CancelButtons/CancelButtons';
 
 
 function AddWinePage() {
@@ -9,8 +10,8 @@ function AddWinePage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [vineyard, setVineyard] = useState('');
-    const [vintage, setVintage] = useState(0);
+    const [vineyard, setVineyard] = useState('Example: Kendall Jackson');
+    const [vintage, setVintage] = useState(2023);
     const [grape, setGrape] = useState(0);
     const [price, setPrice] = useState(0);
     const [place_bought, setPlace_Bought] = useState('');
@@ -105,6 +106,7 @@ function AddWinePage() {
                 onChange={(event) => setRating(event.target.value)}
             />
             <br/>
+            <CancelButton />
             <input type='submit' value='Add Bottle To Your Cellar!'></input>
         </form>
         </div>
