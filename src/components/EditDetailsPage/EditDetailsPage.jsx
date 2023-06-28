@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import CancelButton from '../CancelButtons/CancelButtons';
 
 function EditDetailsPage () {
 
@@ -114,6 +115,7 @@ function EditDetailsPage () {
                 onChange={(event) => setNewRating(event.target.value)}
             />
             <br/>
+            <CancelButton />
             <input type='submit' value='Submit Your Edits!'></input>
         </form>
         </div>
