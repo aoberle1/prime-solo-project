@@ -129,7 +129,6 @@ function EditDetailsForm () {
             onChange={(event) => setNewRating(event.target.value)}
         />
         <br/>
-        <CancelButton />
         <input type='submit' value='Submit Your Edits!'></input>
     </form>
     )
