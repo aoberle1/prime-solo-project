@@ -53,7 +53,7 @@ function AddWineForm() {
 
 
     return (
-        <form onSubmit={(event) => submitWine(event)}>
+        <form className="formPanel" onSubmit={(event) => submitWine(event)}>
             <label>Vineyard / Brand *</label>
             <input
                 type="text"
@@ -119,7 +119,6 @@ function AddWineForm() {
                 onChange={(event) => setRating(event.target.value)}
             />
             <br />
-            <CancelButton />
             <input type='submit' value='Add Bottle To Your Cellar!'></input>
         </form>
     )

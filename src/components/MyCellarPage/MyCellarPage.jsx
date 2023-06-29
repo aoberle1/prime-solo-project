@@ -44,7 +44,7 @@ function MyCellarPage () {
 
     return (
         <div className='center'>
-            <h3 className='center'>My Cellar</h3>
+            <h2 className='center'>My Cellar</h2>
             <table className='center'>
                 <thead>
                     <tr>
@@ -55,6 +55,7 @@ function MyCellarPage () {
                         <th>Purchased Where?</th>
                         <th>Notes</th>
                         <th>Rating</th>
+                        <th colSpan={2}></th>
                     </tr>
                 </thead>
                 <tbody>

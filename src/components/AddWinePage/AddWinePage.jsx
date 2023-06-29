@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AddWineForm from '../AddWineForm/AddWineForm';
 import CancelButton from '../CancelButtons/CancelButtons';
+import './AddWinePage.css'
 
 
 function AddWinePage() {

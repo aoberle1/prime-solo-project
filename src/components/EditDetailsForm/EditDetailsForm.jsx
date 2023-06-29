@@ -62,7 +62,7 @@ function EditDetailsForm () {
     }, [details])
 
     return (
-        <form onSubmit={(event) => submitChanges(event)}>
+        <form className="formPanel" onSubmit={(event) => submitChanges(event)}>
         <label>Vineyard / Brand *</label>
         <input
             type="text"
