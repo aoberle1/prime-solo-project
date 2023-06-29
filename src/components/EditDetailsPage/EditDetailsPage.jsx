@@ -41,7 +41,7 @@ function EditDetailsPage () {
             dangerMode: false,
         }).then((willDelete) => {
             if(willDelete) {
-                swal("Bottle successfully added!", {
+                swal("Bottle information successfully changed!", {
                     icon: "success",
                 });
                 dispatch({ type: 'SUBMIT_CHANGES', payload: newDetails});

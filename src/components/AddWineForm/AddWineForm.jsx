@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CancelButton from '../CancelButtons/CancelButtons';
+import swal from 'sweetalert';
 
 function AddWineForm() {
 
@@ -31,9 +32,24 @@ function AddWineForm() {
             rating
         };
         console.log('newWine being submitted is:', newWine)
-        dispatch({ type: 'SUBMIT_WINE', payload: newWine});
-        history.push('/cellar');
-    }
+        swal({
+            title: "Are you sure you want to add this wine to your cellar?",
+            text: "Click Ok to add your wine, click cancel to change some info",
+            icon: "info",
+            buttons: true,
+            dangerMode: false
+        }).then((willAdd) => {
+            if (willAdd) {
+                swal("Bottle was successfully added to your cellar!", {
+                    icon: "success",
+                });
+                dispatch({ type: 'SUBMIT_WINE', payload: newWine});
+                history.push('/cellar');
+            } else {
+                swal("Add wine canceled, change some info!")
+            }
+        })
+    };
 
 
     return (
