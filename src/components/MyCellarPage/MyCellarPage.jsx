@@ -67,8 +67,8 @@ function MyCellarPage () {
                             <td>{bottle.place_bought}</td>
                             <td>{bottle.notes}</td>
                             <td>{bottle.rating}</td>
-                            <td><button onClick={() => deleteWine(bottle.id)}>DELETE</button></td>
-                            <td onClick={() => handleEdit(bottle.id)}><Link to="/edit"><button>EDIT</button></Link></td>
+                            <td><button onClick={() => deleteWine(bottle.id)}>DELETE THIS BOTTLE</button></td>
+                            <td onClick={() => handleEdit(bottle.id)}><Link to="/edit"><button>EDIT DETAILS</button></Link></td>
                         </tr>
                     ))}
                 </tbody>

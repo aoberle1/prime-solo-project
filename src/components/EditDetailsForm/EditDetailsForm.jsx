@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import CancelButton from '../CancelButtons/CancelButtons';
 import swal from 'sweetalert';
 
 function EditDetailsForm () {
