@@ -43,9 +43,9 @@ function MyCellarPage () {
     }, [])
 
     return (
-        <div className='center'>
-            <h2 className='center'>My Cellar</h2>
-            <table className='center'>
+        <div>
+            <h2>My Cellar</h2>
+            <table className='table_center'>
                 <thead>
                     <tr>
                         <th>Vineyard / Brand</th>
@@ -68,15 +68,16 @@ function MyCellarPage () {
                             <td>{bottle.place_bought}</td>
                             <td>{bottle.notes}</td>
                             <td>{bottle.rating}</td>
-                            <td><button onClick={() => deleteWine(bottle.id)}>DELETE THIS BOTTLE</button></td>
-                            <td onClick={() => handleEdit(bottle.id)}><Link to="/edit"><button>EDIT DETAILS</button></Link></td>
+                            <td><button className='btn btn-danger' onClick={() => deleteWine(bottle.id)}>DELETE THIS BOTTLE</button></td>
+                            <td className='rounded_button' onClick={() => handleEdit(bottle.id)}><Link to="/edit"><button>EDIT DETAILS</button></Link></td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <br></br>
-
-            <button onClick={() => history.push('/add')}>ADD SOME WINE!</button>
+            <div className='flexbox_center'>
+            <button className='btn btn-primary' onClick={() => history.push('/add')}>ADD SOME WINE!</button>
+            </div>
         </div>
     )
 }

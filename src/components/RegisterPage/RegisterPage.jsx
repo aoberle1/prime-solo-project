@@ -13,7 +13,7 @@ function RegisterPage() {
       <center>
         <button
           type="button"
-          className="btn btn_asLink"
+          className="premade_btn btn_asLink"
           onClick={() => {
             history.push('/login');
           }}
