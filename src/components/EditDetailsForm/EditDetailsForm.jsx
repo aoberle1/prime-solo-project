@@ -63,16 +63,18 @@ function EditDetailsForm () {
 
     return (
         <form className="formPanel" onSubmit={(event) => submitChanges(event)}>
-        <label>Vineyard / Brand *</label>
+        <label className='form-label'>Vineyard / Brand *</label>
         <input
+        className='form-control'
             type="text"
             value={newVineyard}
             onChange={(event) => setNewVineyard(event.target.value)}
             required
         />
         <br/>
-        <label>Vintage *</label>
+        <label className='form-label'>Vintage *</label>
         <input
+        className='form-control'
             type="number"
             value={newVintage}
             onChange={(event) => setNewVintage(event.target.value)}
@@ -81,8 +83,8 @@ function EditDetailsForm () {
             required
         />
         <br/>
-        <label>Grape Name *</label>
-        <select required value={newGrape} onChange={(event) => setNewGrape(event.target.value)}>
+        <label className='form-label'>Grape Name *</label>
+        <select className='form-control' required value={newGrape} onChange={(event) => setNewGrape(event.target.value)}>
             <option value={0}> --Select a category </option>
             <option value={1}> Cabernet Sauvignon</option>
             <option value={2}> Merlot</option>
@@ -98,29 +100,33 @@ function EditDetailsForm () {
             <option value={12}> Moscato</option>
         </select>
         <br/>
-        <label>Price</label>
+        <label className='form-label'>Price</label>
         <input
+        className='form-control'
             type="number"
             value={newPrice}
             onChange={(event) => setNewPrice(event.target.value)}
         />
         <br/>
-        <label>Location Purchased</label>
+        <label className='form-label'>Location Purchased</label>
         <input
+        className='form-control'
             type="text"
             value={newPlace_bought}
             onChange={(event) => setNewPlace_Bought(event.target.value)}
         />
         <br/>
-        <label>Tasting Notes</label>
+        <label className='form-label'>Tasting Notes</label>
         <input
+        className='form-control'
             type="text"
             value={newNotes}
             onChange={(event) => setNewNotes(event.target.value)}
         />
         <br/>
-        <label>My Rating (1-10)</label>
+        <label className='form-label'>My Rating (1-10)</label>
         <input
+        className='form-control'
             type="number"
             min="0"
             max="10"

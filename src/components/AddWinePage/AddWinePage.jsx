@@ -8,7 +8,10 @@ function AddWinePage() {
 
     return (
         <div>
-            <h3>Enter New Wine Information Here!</h3>
+            <h2>Enter New Wine Information Here!</h2>
+            <br></br>
+            <h5>To cancel and go back, click cancel at the bottom of the page!</h5>
+            <br/>
             <AddWineForm />
             <CancelButton />
         </div>
