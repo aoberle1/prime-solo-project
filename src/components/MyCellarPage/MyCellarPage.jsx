@@ -17,7 +17,7 @@ function MyCellarPage () {
     function deleteWine(id) {
         swal({
             title: "Are you sure you want to remove this wine from your cellar?",
-            text: "Once removed it will be gone forever and you'll forget you already tried it!",
+            text: "Click OK to remove this wine from your cellar",
             icon: "warning",
             buttons: true,
             dangerMode: true,
