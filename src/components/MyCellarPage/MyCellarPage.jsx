@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 import './MyCellarPage.css'
 import { useHistory, Link } from 'react-router-dom';
+import swal from 'sweetalert';
 
 
 
@@ -14,13 +15,28 @@ function MyCellarPage () {
     const cellar = useSelector(store => store.myWine);
 
     function deleteWine(id) {
-        dispatch({type: 'DELETE_WINE', payload: id });
-    }
+        swal({
+            title: "Are you sure you want to remove this wine from your cellar?",
+            text: "Once removed it will be gone forever and you'll forget you already tried it!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then ((willDelete) => {
+            if (willDelete) {
+                swal("Bottle Successfully removed", {
+                    icon: "success",
+                });
+                dispatch({type: 'DELETE_WINE', payload: id });
+            } else {
+                swal("Delete canceled!")
+            }
+        })
+    };
 
     function handleEdit(id) {
         dispatch({ type: 'EDIT_DETAILS', payload: id});
         // history.push('/edit');
-    }
+    };
 
     useEffect(() => {
         dispatch({ type: 'FETCH_WINE'});
