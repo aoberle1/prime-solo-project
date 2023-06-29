@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CancelButton from '../CancelButtons/CancelButtons';
+import swal from 'sweetalert';
 
 function EditDetailsPage () {
 
@@ -32,9 +33,24 @@ function EditDetailsPage () {
             rating: newRating
         };
         console.log('values of newDetails is:', newDetails);
-        dispatch({ type: 'SUBMIT_CHANGES', payload: newDetails});
-        history.push('/cellar');
-    }
+        swal({
+            title: "Are you ready to submit your changes?",
+            text: "Click Ok to submit your changes, or cancel to change the wine info!",
+            icon: "info",
+            buttons: true,
+            dangerMode: false,
+        }).then((willDelete) => {
+            if(willDelete) {
+                swal("Bottle successfully added!", {
+                    icon: "success",
+                });
+                dispatch({ type: 'SUBMIT_CHANGES', payload: newDetails});
+                history.push('/cellar');
+            } else {
+                swal("Submit Canceled")
+            }
+        })
+    };
 
     useEffect(() => {
         setNewVineyard(details.vineyard);
