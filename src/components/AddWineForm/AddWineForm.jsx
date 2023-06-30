@@ -44,6 +44,8 @@ function AddWineForm() {
             if (willAdd) {
                 swal("Bottle was successfully added to your cellar!", {
                     icon: "success",
+                    timer: 1500,
+                    buttons: false,
                 });
                 dispatch({ type: 'SUBMIT_WINE', payload: newWine });
                 history.push('/cellar');
@@ -146,7 +148,7 @@ function AddWineForm() {
                 onChange={(event) => setNotes(event.target.value)}
             />
             <br />
-            <label className='form-label'>My Rating (1-10)</label>
+            {/* <label className='form-label'>My Rating (1-10)</label>
             <input
                 className='form-control'
                 type="number"
@@ -155,7 +157,24 @@ function AddWineForm() {
                 value={rating}
                 onChange={(event) => setRating(event.target.value)}
             />
-            <br />
+            <br /> */}
+            <label className='form-label'>My Rating (1-10)</label>
+            <select 
+            className='form-control'
+            value={rating} 
+            onChange={(event) => setRating(event.target.value)}>
+                <option value=""> -- Click to select a Rating! </option>
+                <option value={1}> 1</option>
+                <option value={2}> 2</option>
+                <option value={3}> 3</option>
+                <option value={4}> 4</option>
+                <option value={5}> 5</option>
+                <option value={6}> 6</option>
+                <option value={7}> 7</option>
+                <option value={8}> 8</option>
+                <option value={9}> 9</option>
+                <option value={10}> 10</option>
+            </select>
             <input type='submit' value='Add Bottle To Your Cellar!'></input>
         </form>
     )

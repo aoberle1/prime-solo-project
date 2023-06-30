@@ -154,16 +154,24 @@ function EditDetailsForm() {
             />
             <br />
             <label className='form-label'>My Rating (1-10)</label>
-            <input
-                className='form-control'
-                type="number"
-                min="0"
-                max="10"
-                value={newRating}
-                onChange={(event) => setNewRating(event.target.value)}
-            />
-            <br />
-            <input type='submit' value='Submit Your Edits!'></input>
+            <select 
+            className='form-control'
+            value={newRating} 
+            onChange={(event) => setNewRating(event.target.value)}>
+                <option value=""> -- Click to select a Rating! </option>
+                <option value={1}> 1</option>
+                <option value={2}> 2</option>
+                <option value={3}> 3</option>
+                <option value={4}> 4</option>
+                <option value={5}> 5</option>
+                <option value={6}> 6</option>
+                <option value={7}> 7</option>
+                <option value={8}> 8</option>
+                <option value={9}> 9</option>
+                <option value={10}> 10</option>
+            </select>
+            <br/>
+            <input className='btn btn-success' type='submit' value='Submit Your Edits!'></input>
         </form>
     )
 };
