@@ -119,6 +119,7 @@ function AddWineForm() {
             <br />
             <label className='form-label'>Tasting Notes</label>
             <input
+            placeholder='Example: Delicious - tastes like grapefruit!'
                 className='form-control'
                 type="text"
                 value={notes}

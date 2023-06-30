@@ -14,7 +14,7 @@ function* editWine(action) {
 }
 
 function* editWineSaga() {
-    yield takeLatest ('EDIT_DETAILS', editWine)
+    yield takeLatest ('EDIT_DETAILS', editWine);
 }
 
 export default editWineSaga;

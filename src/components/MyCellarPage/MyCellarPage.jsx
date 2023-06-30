@@ -39,7 +39,8 @@ function MyCellarPage () {
     };
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_WINE'});
+        dispatch({ type: 'FETCH_WINE'})
+        // dispatch({ type: 'EDIT_DETAILS', payload: cellar[0].id})
     }, [])
 
     return (
