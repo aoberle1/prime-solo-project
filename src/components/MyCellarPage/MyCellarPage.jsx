@@ -25,6 +25,8 @@ function MyCellarPage () {
             if (willDelete) {
                 swal("Bottle Successfully removed", {
                     icon: "success",
+                    timer: 1000,
+                    buttons: false,
                 });
                 dispatch({type: 'DELETE_WINE', payload: id });
             } else {
