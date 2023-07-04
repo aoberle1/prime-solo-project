@@ -56,7 +56,7 @@ function LoginForm() {
           />
         </label>
       </div>
-      <div>
+      <div className='padding_left3'>
         <input className="premade_btn" type="submit" name="submit" value="Log In" />
       </div>
     </form>
