@@ -27,17 +27,19 @@ function LoginForm() {
   return (
     <form className="formPanel" onSubmit={login}>
       <h2>Login</h2>
+      <br/>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
       <div>
-        <label htmlFor="username">
+        <label htmlFor="username" className='form-label'>
           Username:
           <input
             type="text"
             name="username"
+            className='form-control'
             required
             value={username}
             onChange={(event) => setUsername(event.target.value)}
@@ -45,17 +47,19 @@ function LoginForm() {
         </label>
       </div>
       <div>
-        <label htmlFor="password">
+        <label htmlFor="password" className='form-label'>
           Password:
           <input
             type="password"
             name="password"
+            className='form-control'
             required
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
         </label>
       </div>
+      <br/>
       <div className='padding_left3'>
         <input className="premade_btn" type="submit" name="submit" value="Log In" />
       </div>
