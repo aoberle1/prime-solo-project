@@ -114,6 +114,7 @@ router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
         }).catch(error => {
             console.log('error in PUT in server:', error);
             res.sendStatus(500);
+            alert('Error in PUT on server:', error);
         })
 })
 

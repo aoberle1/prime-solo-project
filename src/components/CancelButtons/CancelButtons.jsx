@@ -22,8 +22,8 @@ function CancelButton () {
     };
 
     return (
-        <div>
-            <button onClick={() => cancelAddWine()}>Cancel - Go Back To My Cellar!</button>
+        <div className="flexbox_center">
+            <button className="btn btn-secondary" type="button" onClick={() => cancelAddWine()}>Cancel - Go Back To My Cellar!</button>
         </div>
     )
 };

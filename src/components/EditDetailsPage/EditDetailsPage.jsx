@@ -6,6 +6,8 @@ function EditDetailsPage () {
     
     return (
         <div>
+        <h2>Edit Wine Details</h2>
+        <br></br>
         <EditDetailsForm />
         <CancelButton />
         </div>
