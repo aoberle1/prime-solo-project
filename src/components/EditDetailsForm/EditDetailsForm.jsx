@@ -171,7 +171,9 @@ function EditDetailsForm() {
                 <option value={10}> 10</option>
             </select>
             <br/>
+            <div className='padding_left2'>
             <input className='btn btn-success' type='submit' value='Submit Your Edits!'></input>
+            </div>
         </form>
     )
 };

@@ -55,6 +55,11 @@ function MyCellarPage () {
     return (
         <div>
             <h2>My Cellar</h2>
+            <div className='centering'>
+            <p>Click the Add Some Wine Button to fill your Cellar!</p>
+            <button className='btn btn-primary' onClick={() => history.push('/add')}>ADD SOME WINE!</button>
+            </div>
+            <br/>
             <br/>
             <div>
             <table className="table_center">
@@ -88,9 +93,6 @@ function MyCellarPage () {
             </table>
             </div>
             <br></br>
-            <div className='flexbox_center'>
-            <button className='btn btn-primary' onClick={() => history.push('/add')}>ADD SOME WINE!</button>
-            </div>
         </div>
     )
 }

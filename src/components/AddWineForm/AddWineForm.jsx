@@ -50,7 +50,11 @@ function AddWineForm() {
                 dispatch({ type: 'SUBMIT_WINE', payload: newWine });
                 history.push('/cellar');
             } else {
-                swal("Add wine canceled, change some info!")
+                swal("Add wine canceled, change some info!", {
+                    icon: "info",
+                    timer: 1500,
+                    buttons: false,
+                })
             }
         })
     };
@@ -148,16 +152,6 @@ function AddWineForm() {
                 onChange={(event) => setNotes(event.target.value)}
             />
             <br />
-            {/* <label className='form-label'>My Rating (1-10)</label>
-            <input
-                className='form-control'
-                type="number"
-                min="0"
-                max="10"
-                value={rating}
-                onChange={(event) => setRating(event.target.value)}
-            />
-            <br /> */}
             <label className='form-label'>My Rating (1-10)</label>
             <select 
             className='form-control'
@@ -175,7 +169,10 @@ function AddWineForm() {
                 <option value={9}> 9</option>
                 <option value={10}> 10</option>
             </select>
-            <input type='submit' value='Add Bottle To Your Cellar!'></input>
+            <br/>
+            <div className='padding_left'>
+            <input className='btn btn-success' type='submit' value='Add Bottle To Your Cellar!'></input>
+            </div>
         </form>
     )
 

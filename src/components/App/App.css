@@ -19,6 +19,10 @@ img {
   line-height: 1.6;
 }
 
+.centering {
+  text-align: center;
+}
+
 /* --------------------------------------------------------------------------------
 Image Styling
 -------------------------------------------------------------------------------- */
@@ -116,11 +120,6 @@ Button
   color: #008183;
 }
 
-.button_container {
-  height: 200px;
-  position: relative;
-}
-
 .flexbox_center {
   display: flex;
   justify-content: center;
@@ -128,8 +127,12 @@ Button
   height: 200px;
 }
 
-.button_center {
-  text-align: center;
+.padding_left {
+  padding-left: 20%;
+}
+
+.padding_left2 {
+  padding-left: 25%;
 }
 
 /* --------------------------------------------------------------------------------
