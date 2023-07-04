@@ -51,7 +51,8 @@ function RegisterForm() {
           />
         </label>
       </div>
-      <div>
+      <br/>
+      <div className='padding_left3'>
         <input className="premade_btn" type="submit" name="submit" value="Register" />
       </div>
     </form>
