@@ -78,3 +78,18 @@ Grid
   flex-basis: 100%;
   max-width: 100%;
 }
+
+.image_float_left {
+  width: 400px;
+  float: left;
+  padding-right: 40px;
+}
+
+.padding_right {
+  padding-right: 40px;
+}
+
+.text_styling {
+  font-size: 1.2em;
+  text-align: center;
+}
