@@ -77,7 +77,19 @@ function MyCellarPage () {
                 </thead>
                 <tbody>
                     {cellar.map(bottle => (
-                        <tr key={bottle.id}>
+                        
+
+                        <tr key={bottle.id} style={bottle.grape_id <= 6 ? (
+                            {
+                                backgroundColor: "rgb(136, 8, 8)",
+                                color: "white",
+                                }
+                        ) : (
+                            {
+                                backgroundColor: "rgb(255, 235, 200)",
+                                color: "rgb(136, 8, 8)",
+                                }
+                        )}>
                             <td>{bottle.vineyard}</td>
                             <td>{bottle.vintage}</td>
                             <td>{bottle.name}</td>

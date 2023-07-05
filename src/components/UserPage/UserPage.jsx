@@ -11,11 +11,12 @@ import { Box } from '@mui/material';
 import { CardActions } from '@mui/material';
 import { CardContent } from '@mui/material';
 import { Typography } from '@mui/material';
+import { useState } from 'react';
 
 function UserPage() {
   const user = useSelector((store) => store.user);
   const wineCount = useSelector((store) => store.wineCount);
-  const favorites = useSelector((store) => store.favorites)
+  const favorites = useSelector((store) => store.favorites);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -34,6 +35,8 @@ function UserPage() {
       // },
     },
   });
+
+  const isWhite = false;
 
   useEffect(() => {
     dispatch({ type: 'FETCH_CELLAR_COUNT' });
@@ -57,18 +60,17 @@ function UserPage() {
       <br />
       <p>Here are your 5 best rated bottles in your collection!</p>
       <br />
-      <ul className='centering'>
-        {favorites.map(fav => (
-          <li>{fav.vintage} {fav.vineyard} {fav.name} - Your Rating: {fav.rating}</li>
-        ))}
-      </ul>
-      <br />
       <div className='card_map'>
           <ThemeProvider theme={theme}>
             {favorites.map(fav => (
                       <div>
                           <Box>
-                          <Card variant="outlined" style={{ backgroundColor: "rgb(136, 8, 8)", color: "white" }}>
+                          {fav.grape_id <= 6 ? (
+                            <Card variant="outlined"
+                            style={{
+                            backgroundColor: "rgb(136, 8, 8)",
+                            color: "white",
+                            }}>
                             <CardContent>
                               <Typography sx={{ fontSize: "1.5rem"}}>
                                 {fav.vineyard}
@@ -84,6 +86,28 @@ function UserPage() {
                               </Typography>
                             </CardContent>
                           </Card>
+                          ) : (
+                            <Card variant="outlined"
+                            style={{
+                            backgroundColor: "rgb(255, 235, 200)",
+                            color: "rgb(136, 8, 8)",
+                            }}>
+                            <CardContent>
+                              <Typography sx={{ fontSize: "1.5rem"}}>
+                                {fav.vineyard}
+                              </Typography>
+                              <Typography sx={{ fontSize: "1.2rem"}}>
+                                {fav.vintage}
+                              </Typography>
+                              <Typography sx={{ fontSize: "1.2rem"}}>
+                                {fav.name}
+                              </Typography>
+                              <Typography sx={{ fontSize: "1.2rem"}}>
+                                Your Rating: {fav.rating}
+                              </Typography>
+                            </CardContent>
+                          </Card>
+                          )}
                         </Box>
                         </div>
             ))}
