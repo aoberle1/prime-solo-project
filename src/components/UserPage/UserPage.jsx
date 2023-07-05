@@ -63,23 +63,23 @@ function UserPage() {
         ))}
       </ul>
       <br />
-      <div>
+      <div className='card_map'>
           <ThemeProvider theme={theme}>
             {favorites.map(fav => (
                       <div>
-                          <Box sx={{ maxWidth: 275 }}>
+                          <Box>
                           <Card variant="outlined" style={{ backgroundColor: "rgb(136, 8, 8)", color: "white" }}>
                             <CardContent>
-                              <Typography>
+                              <Typography sx={{ fontSize: "1.5rem"}}>
                                 {fav.vineyard}
                               </Typography>
-                              <Typography>
+                              <Typography sx={{ fontSize: "1.2rem"}}>
                                 {fav.vintage}
                               </Typography>
-                              <Typography>
+                              <Typography sx={{ fontSize: "1.2rem"}}>
                                 {fav.name}
                               </Typography>
-                              <Typography>
+                              <Typography sx={{ fontSize: "1.2rem"}}>
                                 Your Rating: {fav.rating}
                               </Typography>
                             </CardContent>
