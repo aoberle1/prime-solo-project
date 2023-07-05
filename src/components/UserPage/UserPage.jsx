@@ -5,7 +5,12 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 import './UserPage.css'
-
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Card } from '@mui/material';
+import { Box } from '@mui/material';
+import { CardActions } from '@mui/material';
+import { CardContent } from '@mui/material';
+import { Typography } from '@mui/material';
 
 function UserPage() {
   const user = useSelector((store) => store.user);
@@ -15,7 +20,20 @@ function UserPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: 'rgb(136, 8, 8)',
+      },
+      secondary: {
+        // This is green.A700 as hex.
+        main: '#11cb5f',
+      },
+      // background: {
+      //   paper: 'rgb(136, 8, 8)', // your color
+      // },
+    },
+  });
 
   useEffect(() => {
     dispatch({ type: 'FETCH_CELLAR_COUNT' });
@@ -44,6 +62,33 @@ function UserPage() {
           <li>{fav.vintage} {fav.vineyard} {fav.name} - Your Rating: {fav.rating}</li>
         ))}
       </ul>
+      <br />
+      <div>
+          <ThemeProvider theme={theme}>
+            {favorites.map(fav => (
+                      <div>
+                          <Box sx={{ maxWidth: 275 }}>
+                          <Card variant="outlined" style={{ backgroundColor: "rgb(136, 8, 8)", color: "white" }}>
+                            <CardContent>
+                              <Typography>
+                                {fav.vineyard}
+                              </Typography>
+                              <Typography>
+                                {fav.vintage}
+                              </Typography>
+                              <Typography>
+                                {fav.name}
+                              </Typography>
+                              <Typography>
+                                Your Rating: {fav.rating}
+                              </Typography>
+                            </CardContent>
+                          </Card>
+                        </Box>
+                        </div>
+            ))}
+          </ThemeProvider>
+      </div>
       <br />
       <p>Your ID is: {user.id}</p>
       <div className='user_center'>
