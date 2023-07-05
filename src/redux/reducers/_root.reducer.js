@@ -4,6 +4,7 @@ import user from './user.reducer';
 import myWine from './myWine.reducer';
 import details from './details.reducer';
 import wineCount from './wineCount.reducer'
+import favorites from './favorites.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   myWine,
   details,
   wineCount,
+  favorites,
 });
 
 export default rootReducer;

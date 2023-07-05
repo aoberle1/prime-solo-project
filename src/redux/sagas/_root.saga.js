@@ -7,6 +7,7 @@ import submitWineSaga from './submit.saga';
 import deleteWineSaga from './delete.saga';
 import editWineSaga from './edit.saga';
 import wineCountSaga from './wineCount.saga'
+import favoritesSaga from './favorites.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     deleteWineSaga(),
     editWineSaga(),
     wineCountSaga(),
+    favoritesSaga(),
   ]);
 }
