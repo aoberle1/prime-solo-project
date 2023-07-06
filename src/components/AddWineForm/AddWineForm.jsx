@@ -8,9 +8,11 @@ import './AddWineForm.css'
 
 function AddWineForm() {
 
+    // adding dispatch and history, importing from dependencies above
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // creating state variables to capture values entered in input fields in form
     const [vineyard, setVineyard] = useState('');
     const [vintage, setVintage] = useState(0);
     const [grape, setGrape] = useState(0);
@@ -19,10 +21,12 @@ function AddWineForm() {
     const [notes, setNotes] = useState('');
     const [rating, setRating] = useState(0);
 
+    // submitWine function that runs when form is submitted
     function submitWine(event) {
         event.preventDefault();
         console.log('Values to be submitted are:', vineyard, vintage, grape, price, place_bought, notes, rating);
 
+        // setting input field values to object properties with names matching database table names
         let newWine = {
             vineyard,
             vintage,
@@ -34,7 +38,7 @@ function AddWineForm() {
         };
         console.log('newWine being submitted is:', newWine)
 
-
+        // using sweet alert on submit - user must confirm submit for submit dispatch to run
         swal({
             title: "Are you sure you want to add this wine to your cellar?",
             text: "Click Ok to add your wine, click cancel to change some info",
@@ -42,14 +46,19 @@ function AddWineForm() {
             buttons: true,
             dangerMode: false
         }).then((willAdd) => {
+            // if user confirms the submit display confirmation alert
             if (willAdd) {
+                // display this message
                 swal("Bottle was successfully added to your cellar!", {
                     icon: "success",
                     timer: 1500,
                     buttons: false,
                 });
+                // dispatch to saga with newWine
                 dispatch({ type: 'SUBMIT_WINE', payload: newWine });
+                // move user to My Cellar page
                 history.push('/cellar');
+                // else display cancel message and remain on Add page
             } else {
                 swal("Add wine canceled, change some info!", {
                     icon: "info",
@@ -63,6 +72,7 @@ function AddWineForm() {
 
     return (
         <div>
+            {/* creating form with 7 input fields - when form is submitted, run submitWine function */}
             <form className="formPanel" onSubmit={(event) => submitWine(event)}>
                 <label className='form-label'>Vineyard / Brand *</label>
                 <input
@@ -75,6 +85,7 @@ function AddWineForm() {
                 />
                 <br />
                 <label className='form-label'>Vintage *</label>
+                {/* input is a dropdown menu with selectable years - value of each option is the year */}
                 <select
                     className='form-control'
                     required
@@ -108,6 +119,8 @@ function AddWineForm() {
                 </select>
                 <br />
                 <label className='form-label'>Grape Name *</label>
+                {/* input is a dropdown menu with selectable grapes - value of each option is a number value
+                assigned to each grape name - number value is associated with grape_id on wine table in database */}
                 <select
                     className='form-control'
                     required
@@ -172,6 +185,7 @@ function AddWineForm() {
                     <option value={10}> 10</option>
                 </select>
                 <br />
+                {/* submit "button" (submit input) */}
                 <div className='padding_left'>
                     <input className='btn btn-success' type='submit' value='Add Bottle To Your Cellar!'></input>
                 </div>

@@ -5,9 +5,6 @@ import './MyCellarPage.css'
 import { useHistory, Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Card, CardMedia, Box, CardContent, Typography, CardActions, Button } from '@mui/material';
-// import { Box } from '@mui/material';
-// import { CardContent } from '@mui/material';
-// import { Typography } from '@mui/material';
 
 
 function MyCellarPage() {

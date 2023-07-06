@@ -8,10 +8,13 @@ function EditDetailsForm() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+
+    // bringing details reducer into component
     const details = useSelector(store => store.details);
 
     console.log('details is:', details);
 
+    // creating state variables for each input
     const [newVineyard, setNewVineyard] = useState('');
     const [newVintage, setNewVintage] = useState(0);
     const [newGrape, setNewGrape] = useState(0);
@@ -24,6 +27,7 @@ function EditDetailsForm() {
 
         event.preventDefault();
 
+        // packaging up input field values into object with properties set to the value of each input
         let newDetails = {
             id: details.id,
             vineyard: newVineyard,
@@ -35,6 +39,7 @@ function EditDetailsForm() {
             rating: newRating
         };
         console.log('values of newDetails is:', newDetails);
+        // sweet alert forcing user to confirm the form submission
         swal({
             title: "Are you ready to submit your changes?",
             text: "Click Ok to submit your changes, or cancel to change the wine info!",
@@ -42,11 +47,15 @@ function EditDetailsForm() {
             buttons: true,
             dangerMode: false,
         }).then((willChange) => {
+            // if user confirms form submission
             if (willChange) {
+                // display confirmation message
                 swal("Bottle information successfully changed!", {
                     icon: "success",
                 });
+                // dispatch to sage with newDetails object attached
                 dispatch({ type: 'SUBMIT_CHANGES', payload: newDetails });
+                // move user to My Cellar page
                 history.push('/cellar');
             } else {
                 swal("Submit Canceled")
@@ -54,6 +63,8 @@ function EditDetailsForm() {
         })
     };
 
+    // when details store reducer is updated, run set functions for state variables using store reducer values
+    // input fields in form are assigned state variable values as default values
     useEffect(() => {
         setNewVineyard(details.vineyard);
         setNewVintage(details.vintage);
@@ -67,6 +78,7 @@ function EditDetailsForm() {
     return (
         <form className="formPanel" onSubmit={(event) => submitChanges(event)}>
             <label className='form-label'>Vineyard / Brand *</label>
+            {/* Each input default value will be the existing value for bottle being edited */}
             <input
                 className='form-control'
                 type="text"

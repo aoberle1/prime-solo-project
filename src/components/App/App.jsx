@@ -64,6 +64,7 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows MyCellarPage else shows LoginPage
             exact
             path="/cellar"
           >
@@ -71,6 +72,8 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows AddWinePage else shows LoginPage
+
             exact
             path="/add"
           >
@@ -78,6 +81,8 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows EditDetailsPage else shows LoginPage
+
             exact
             path="/edit"
           >
