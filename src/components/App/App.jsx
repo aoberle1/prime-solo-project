@@ -25,10 +25,20 @@ import './App.css';
 import AddWinePage from '../AddWinePage/AddWinePage';
 import EditDetailsPage from '../EditDetailsPage/EditDetailsPage';
 
+import { createTheme, ThemeProvider } from '@mui/material';
+
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: 'rgb(136, 8, 8)',
+      }
+    },
+  });
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
@@ -68,7 +78,9 @@ function App() {
             exact
             path="/cellar"
           >
+            <ThemeProvider theme={theme}>
             <MyCellarPage />
+            </ThemeProvider>
           </ProtectedRoute>
 
           <ProtectedRoute

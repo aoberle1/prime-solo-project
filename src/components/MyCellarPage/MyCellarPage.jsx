@@ -57,8 +57,11 @@ function MyCellarPage() {
         <div>
             <h1 className='centering'>My Cellar</h1>
             <div className='centering'>
-                <p>Click the Add Some Wine Button to fill your Cellar!</p>
-                <button className='btn btn-primary' onClick={() => history.push('/add')}>ADD SOME WINE!</button>
+                <p>Click the Add Some Wine Button below or the Add Wine link in the navigation bar to fill your Cellar!</p>
+                <br />
+                {/* <button className='btn btn-primary' onClick={() => history.push('/add')}>ADD SOME WINE!</button> */}
+                <Button variant="contained" size='large' onClick={() => history.push('/add')}>ADD SOME WINE</Button>
+
             </div>
             <br />
             <br />
