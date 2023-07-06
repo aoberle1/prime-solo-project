@@ -31,3 +31,18 @@ h2, h5 {
 .rounded_button {
     border-radius: 4px;
 }
+
+.cellar_flex_map {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.flex_child {
+    flex-basis: 25%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }

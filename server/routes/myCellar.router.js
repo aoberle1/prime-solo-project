@@ -6,7 +6,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    const queryText = `SELECT "wine"."id", "vineyard", "vintage", "grape"."name", "price", "place_bought", "notes", "rating" 
+    const queryText = `SELECT "wine"."id", "vineyard", "vintage", "grape"."name", "price", "place_bought", "grape_id", "notes", "rating" 
     FROM "wine"
     JOIN "user" ON "user"."id" = "wine"."user_id"
     JOIN "grape" ON "grape"."id" = "wine"."grape_id"
