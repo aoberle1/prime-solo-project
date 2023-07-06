@@ -5,6 +5,7 @@ import './MyCellarPage.css'
 import { useHistory, Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import { Card, CardMedia, Box, CardContent, Typography, CardActions, Button } from '@mui/material';
+import { DeleteForever, EditNote } from '@mui/icons-material'
 
 
 function MyCellarPage() {
@@ -54,7 +55,7 @@ function MyCellarPage() {
 
     return (
         <div>
-            <h2>My Cellar</h2>
+            <h1 className='centering'>My Cellar</h1>
             <div className='centering'>
                 <p>Click the Add Some Wine Button to fill your Cellar!</p>
                 <button className='btn btn-primary' onClick={() => history.push('/add')}>ADD SOME WINE!</button>
@@ -72,7 +73,8 @@ function MyCellarPage() {
                             <th>Purchased Where?</th>
                             <th>Notes</th>
                             <th>Rating</th>
-                            <th colSpan={2}></th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,12 +93,19 @@ function MyCellarPage() {
                                 <td>{bottle.vineyard}</td>
                                 <td>{bottle.vintage}</td>
                                 <td>{bottle.name}</td>
+                                {/* <td>{bottle.price = 0 ? (
+                                    '-'
+                                ) : (
+                                    bottle.price
+                                )} </td> */}
                                 <td>{bottle.price}</td>
                                 <td>{bottle.place_bought}</td>
                                 <td>{bottle.notes}</td>
                                 <td>{bottle.rating}</td>
-                                <td><button className='btn btn-danger' onClick={() => deleteWine(bottle.id)}>DELETE THIS BOTTLE</button></td>
-                                <td onClick={() => handleEdit(bottle.id)}><button className='btn btn-secondary'>EDIT DETAILS</button></td>
+                                {/* <td><button className='btn btn-danger' onClick={() => deleteWine(bottle.id)}>DELETE THIS BOTTLE</button></td> */}
+                                {/* <td onClick={() => handleEdit(bottle.id)}><button className='btn btn-secondary'>EDIT DETAILS</button></td> */}
+                                <td onClick={() => handleEdit(bottle.id)} className='table_edit_hover'><EditNote /></td>
+                                <td onClick={() => deleteWine(bottle.id)} className='table_delete_hover'><DeleteForever /></td>
                             </tr>
 
                         ))}
