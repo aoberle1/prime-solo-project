@@ -37,9 +37,6 @@ function App() {
       primary: {
         main: 'rgb(136, 8, 8)',
       },
-      // secondary: {
-      //   main: 'grey',
-      // },
     },
   });
 
