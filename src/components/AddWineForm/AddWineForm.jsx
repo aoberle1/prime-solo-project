@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import CancelButton from '../CancelButtons/CancelButtons';
 import swal from 'sweetalert';
 import './AddWineForm.css'
+import { Button } from '@mui/material';
 
 function AddWineForm() {
 
@@ -152,6 +153,7 @@ function AddWineForm() {
                 <br />
                 <label className='form-label'>Location Purchased</label>
                 <input
+                    placeholder='Example: Total Wine and Spirits'
                     className='form-control'
                     type="text"
                     value={place_bought}
@@ -186,9 +188,12 @@ function AddWineForm() {
                 </select>
                 <br />
                 {/* submit "button" (submit input) */}
-                <div className='padding_left'>
-                    <input className='btn btn-success' type='submit' value='Add Bottle To Your Cellar!'></input>
+                <div className='add_button_padding'>
+                    {/* <input className='btn btn-success' type='submit' value='Add Bottle To Your Cellar!'></input> */}
+                    <Button variant='contained' size='large' type='submit'>Add Bottle To Your Cellar!</Button>
                 </div>
+                <br />
+                <CancelButton />
             </form>
         </div>
     )

@@ -36,7 +36,10 @@ function App() {
     palette: {
       primary: {
         main: 'rgb(136, 8, 8)',
-      }
+      },
+      // secondary: {
+      //   main: 'grey',
+      // },
     },
   });
 
@@ -79,7 +82,7 @@ function App() {
             path="/cellar"
           >
             <ThemeProvider theme={theme}>
-            <MyCellarPage />
+              <MyCellarPage />
             </ThemeProvider>
           </ProtectedRoute>
 
@@ -89,7 +92,9 @@ function App() {
             exact
             path="/add"
           >
-            <AddWinePage />
+            <ThemeProvider theme={theme}>
+              <AddWinePage />
+            </ThemeProvider>
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -98,7 +103,9 @@ function App() {
             exact
             path="/edit"
           >
+            <ThemeProvider theme={theme}>
             <EditDetailsPage />
+            </ThemeProvider>
           </ProtectedRoute>
 
           <ProtectedRoute

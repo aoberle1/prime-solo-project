@@ -35,7 +35,7 @@ function LandingPage() {
 
           <p className='text_styling'>
             Create your account now (still free) and soon you'll be ordering like a professional
-            where you are!
+            wherever you are!
           </p>
         </div>
         <div className="grid-col grid-col_4">

@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import swal from 'sweetalert';
+import CancelButton from '../CancelButtons/CancelButtons';
+import { Button } from '@mui/material';
+import './EditDetailsForm.css'
 
 function EditDetailsForm() {
 
@@ -52,6 +55,8 @@ function EditDetailsForm() {
                 // display confirmation message
                 swal("Bottle information successfully changed!", {
                     icon: "success",
+                    timer: 1500,
+                    buttons: false,
                 });
                 // dispatch to sage with newDetails object attached
                 dispatch({ type: 'SUBMIT_CHANGES', payload: newDetails });
@@ -86,7 +91,6 @@ function EditDetailsForm() {
                 onChange={(event) => setNewVineyard(event.target.value)}
                 required
             />
-            <p className='form-text'>Required</p>
             <br />
             <label className='form-label'>Vintage *</label>
             <select 
@@ -120,7 +124,6 @@ function EditDetailsForm() {
                 <option value={2001}> 2001</option>
                 <option value={2000}> 2000</option>
             </select>
-            <p className='form-text'>Required</p>
             <br />
             <label className='form-label'>Grape Name *</label>
             <select className='form-control' required value={newGrape} onChange={(event) => setNewGrape(event.target.value)}>
@@ -138,7 +141,6 @@ function EditDetailsForm() {
                 <option value={11}> Chenin Blanc</option>
                 <option value={12}> Moscato</option>
             </select>
-            <p className='form-text'>Required</p>
             <br />
             <label className='form-label'>Price</label>
             <input
@@ -183,9 +185,11 @@ function EditDetailsForm() {
                 <option value={10}> 10</option>
             </select>
             <br/>
-            <div className='padding_left2'>
-            <input className='btn btn-success' type='submit' value='Submit Your Edits!'></input>
+            <div className='submit_button_padding'>
+            <Button variant='contained' size='large' type='submit'>Submit Your Edits!</Button>
             </div>
+            <br />
+            <CancelButton />
         </form>
     )
 };

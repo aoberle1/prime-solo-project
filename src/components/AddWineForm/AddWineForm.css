@@ -3,3 +3,11 @@
     float: left;
     padding-right: 40px;
 }
+
+.add_button_padding {
+    padding-left: 10%;
+}
+
+.cancel_button_padding {
+    padding-left: 35%;
+}
