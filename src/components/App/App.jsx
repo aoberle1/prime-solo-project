@@ -25,10 +25,23 @@ import './App.css';
 import AddWinePage from '../AddWinePage/AddWinePage';
 import EditDetailsPage from '../EditDetailsPage/EditDetailsPage';
 
+import { createTheme, ThemeProvider } from '@mui/material';
+
 function App() {
   const dispatch = useDispatch();
 
   const user = useSelector(store => store.user);
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: 'rgb(136, 8, 8)',
+      },
+      // secondary: {
+      //   main: 'grey',
+      // },
+    },
+  });
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
@@ -68,7 +81,9 @@ function App() {
             exact
             path="/cellar"
           >
-            <MyCellarPage />
+            <ThemeProvider theme={theme}>
+              <MyCellarPage />
+            </ThemeProvider>
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -77,7 +92,9 @@ function App() {
             exact
             path="/add"
           >
-            <AddWinePage />
+            <ThemeProvider theme={theme}>
+              <AddWinePage />
+            </ThemeProvider>
           </ProtectedRoute>
 
           <ProtectedRoute
@@ -86,7 +103,9 @@ function App() {
             exact
             path="/edit"
           >
+            <ThemeProvider theme={theme}>
             <EditDetailsPage />
+            </ThemeProvider>
           </ProtectedRoute>
 
           <ProtectedRoute

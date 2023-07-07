@@ -46,7 +46,23 @@ td {
   text-align: center;
 }
 
-tr:nth-child(even) {
+th {
+  font-size: 1.4em;
+}
+
+td {
+  font-size: 1.2em;
+}
+
+.table_edit_hover:hover {
+  background-color: royalblue;
+}
+
+.table_delete_hover:hover {
+  background-color: red;
+}
+
+/* tr:nth-child(even) {
   background-color: rgb(136, 8, 8);
   color: antiquewhite;
 }
@@ -54,7 +70,7 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: antiquewhite;
   color: rgb(136, 8, 8);
-}
+} */
 
 
 

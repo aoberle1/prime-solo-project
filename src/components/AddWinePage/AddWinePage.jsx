@@ -12,8 +12,8 @@ function AddWinePage() {
             <br/>
             <h5>To cancel and go back, click cancel at the bottom of the page!</h5>
             <br/>
+            <p>Required fields are indicated by a *</p>
             <AddWineForm />
-            <CancelButton />
         </div>
     )
 }

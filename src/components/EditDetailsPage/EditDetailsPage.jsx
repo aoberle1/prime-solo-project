@@ -8,8 +8,9 @@ function EditDetailsPage () {
         <div>
         <h2>Edit Wine Details</h2>
         <br></br>
+        <p>Required fields are indicated by *</p>
+        <br />
         <EditDetailsForm />
-        <CancelButton />
         </div>
     )
 
