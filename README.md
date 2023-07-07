@@ -1,35 +1,23 @@
+# In Vino Veritas - Wine Tracking App
 
-# Prime Solo Project Starting Repo
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+Duration: 2 Weeks
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
-
-## Use the Template for This Repository (Don't Clone)
-
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account. Make the project `PUBLIC`!
-
+In Vino Veritas is an app focused on strengthening the knowledge base of beginner level wine drinkers.
+Users will be able to add bottles of wine to their collection and edit those details to include their personal rating and tasting notes once the wine has been tasted.  Users will also be able to use the Info Page for wine history information and tips on grape pronunciation and how to taste and take notes on wine.
 
 ## Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
 
+- Code editing software such as [Visual Studio Code](https://code.visualstudio.com/)
+- Database software such as [Postico](https://eggerapps.at/postico/v1.php)
 - [Node.js](https://nodejs.org/en/)
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
+## Create database and tables
 
-Create a new database called `prime_app` and create a `user` table:
-
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
-
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+Create a new database called `in-vino-veritas` and copy the SQL queries from the database.sql file into your database app (Postico used for development) and run them.
 
 ## Development Setup Instructions
 
@@ -84,27 +72,6 @@ There are a few videos linked below that show a walkthrough the client and sever
 - [Initial Set](https://vimeo.com/453297271)
 - [Server Walkthrough](https://vimeo.com/453297212)
 - [Client Walkthrough](https://vimeo.com/453297124)
-
-Directory Structure:
-
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
 
 ## Deployment
 
