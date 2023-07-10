@@ -13,9 +13,11 @@ function MyCellarPage() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // myWine reducer contains all user's wine cellar info in database
     const cellar = useSelector(store => store.myWine);
 
     function deleteWine(id) {
+        // using sweet alert to force user to confirm decision to delete wine from cellar
         swal({
             title: "Are you sure you want to remove this wine from your cellar?",
             text: "Click the Remove button to remove this wine from your cellar",
@@ -44,12 +46,14 @@ function MyCellarPage() {
         })
     };
 
+    // function run when any td element containing an edit icon is clicked - uses that td element's parent id
     function handleEdit(id) {
         dispatch({ type: 'EDIT_DETAILS', payload: id });
         history.push('/edit');
     };
 
     useEffect(() => {
+        // when page loads, dispatch FETCH_WINE to sagas
         dispatch({ type: 'FETCH_WINE' })
     }, [])
 
@@ -59,7 +63,7 @@ function MyCellarPage() {
             <div className='centering'>
                 <p>Click the Add Some Wine Button below or the Add Wine link in the navigation bar to fill your Cellar!</p>
                 <br />
-                {/* <button className='btn btn-primary' onClick={() => history.push('/add')}>ADD SOME WINE!</button> */}
+                {/* button takes user to Add Wine page when clicked */}
                 <Button variant="contained" size='large' onClick={() => history.push('/add')}>ADD SOME WINE</Button>
 
             </div>
@@ -96,18 +100,13 @@ function MyCellarPage() {
                                 <td>{bottle.vineyard}</td>
                                 <td>{bottle.vintage}</td>
                                 <td>{bottle.name}</td>
-                                {/* <td>{bottle.price = 0 ? (
-                                    '-'
-                                ) : (
-                                    bottle.price
-                                )} </td> */}
                                 <td>{bottle.price}</td>
                                 <td>{bottle.place_bought}</td>
                                 <td>{bottle.notes}</td>
                                 <td>{bottle.rating}</td>
-                                {/* <td><button className='btn btn-danger' onClick={() => deleteWine(bottle.id)}>DELETE THIS BOTTLE</button></td> */}
-                                {/* <td onClick={() => handleEdit(bottle.id)}><button className='btn btn-secondary'>EDIT DETAILS</button></td> */}
+                                {/* on click of this table data, run function handleEdit - EditNote is MUI icon */}
                                 <td onClick={() => handleEdit(bottle.id)} className='table_edit_hover'><EditNote /></td>
+                                {/* on click of this table data, run function deleteWine - DeleteForever is MUI icon */}
                                 <td onClick={() => deleteWine(bottle.id)} className='table_delete_hover'><DeleteForever /></td>
                             </tr>
 
@@ -117,7 +116,7 @@ function MyCellarPage() {
             </div>
             <br />
 
-            
+
             {/* Beginning MUI card map layout */}
             {/* <Box className='cellar_flex_map'>
                 {cellar.map(bottle => (

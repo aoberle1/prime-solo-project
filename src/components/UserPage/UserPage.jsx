@@ -12,13 +12,17 @@ import { Typography } from '@mui/material';
 
 function UserPage() {
   const user = useSelector((store) => store.user);
+  // store that has the total number of bottles in the user's cellar
   const wineCount = useSelector((store) => store.wineCount);
+
+  // store containing the user's 5 highest rated bottles in their collection
   const favorites = useSelector((store) => store.favorites);
 
   const dispatch = useDispatch();
   const history = useHistory();
 
   useEffect(() => {
+    // on page load, dispatch both types
     dispatch({ type: 'FETCH_CELLAR_COUNT' });
     dispatch({ type: 'FETCH_FAV' });
   }, [])
@@ -27,11 +31,12 @@ function UserPage() {
     <div className="container">
       <h1 className='centering'>Welcome, {user.username}!</h1>
       <br />
-      <p>Press the Go To Cellar Button to check out your collection, or press the Add Wine button
-        to get started adding a bottle of wine to your collection!
+      <p>Press the Go To Cellar Button to check out your collection, or press the Add Wine link in the 
+        navigation bar at the top to get started adding a bottle of wine to your collection!
       </p>
       <br />
       <div className='user_center'>
+        {/* when button is clicked, user is taken to the My Cellar page */}
         <button className='premade_btn' onClick={() => history.push('/cellar')}>Go To Cellar</button>
       </div>
       <br />
@@ -40,10 +45,13 @@ function UserPage() {
       <br />
       <p>Here are your 5 best rated bottles in your collection!</p>
       <br />
+      {/* mapping out 5 best rated bottles in the user's collection using MUI cards */}
       <div className='card_map'>
           {favorites.map(fav => (
             <div>
               <Box>
+                {/* conditionally rendering cards with different background colors depending on the 
+                value of it's grape_id */}
                 {fav.grape_id <= 6 ? (
                   <Card variant="outlined"
                     style={{

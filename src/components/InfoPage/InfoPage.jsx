@@ -17,6 +17,8 @@ function InfoPage() {
 The altered consciousness produced by wine has been considered religious since its origin. The ancient Greeks worshiped Dionysus or Bacchus and the Ancient Romans carried on his cult. Consumption of ritual wine, probably a certain type of sweet wine originally, was part of Jewish practice since Biblical times and, as part of the eucharist commemorating Jesus's Last Supper, became even more essential to the Christian Church. Although Islam nominally forbade the production or consumption of wine, during its Golden Age, alchemists such as Geber pioneered wine's distillation for medicinal and industrial purposes such as the production of perfume.
 
 Wine production and consumption increased, burgeoning from the 15th century onwards as part of European expansion. Despite the devastating 1887 phylloxera louse infestation, modern science and technology adapted and industrial wine production and wine consumption now occur throughout the world.</p>
+<br></br>
+<p>Source: Wikipedia - The History of Wine</p>
     </div>
   );
 }

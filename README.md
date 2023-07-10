@@ -32,47 +32,6 @@ Create a new database called `in-vino-veritas` and copy the SQL queries from the
 - Run `npm run client`
 - Navigate to `localhost:3000`
 
-## Debugging
-
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
-
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
-
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
-
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
-
-## Testing Routes with Postman
-
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
-
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
-
-1. Start the server - `npm run server`
-2. Import the sample routes JSON file [v2](./PostmanPrimeSoloRoutesv2.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
-
-After running the login route above, you can try any other route you've created that requires a logged in user!
-
-## Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
-
-## Lay of the Land
-
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
-
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
-
 ## Deployment
 
 1. Create a new Heroku project
@@ -83,6 +42,14 @@ There are a few videos linked below that show a walkthrough the client and sever
 1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
 1. In the deploy section, select manual deploy
 
-## Update Documentation
+## Usage
 
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+ - Login/Register Page - User is either able to register a new account or log in to their existing account.  After logging in the user will be automatically be taken to their profile page.
+
+ - User Profile Page - User is able to see total number of bottles of wine that have been added to their collection as well as their 5 best rated bottles in their collection in MUI card format.  User is able to navigate to any page through the navigation bar at the top of the screen, or they can be taken to the My Cellar page by clicking the button in the middle of the page.
+
+ - My Cellar Page - User is able to see detailed information about each bottle of wine that has been added to the collection - The brand name, vintage, grape, price, location purchased, the user's notes and the user's rating for the wine on a scale of 1-10.  The user can click on the edit or delete icons to the right of the bottle information to either update bottle information, or remove the bottle from the page and the database.  Clicking the Add Some Wine button in the middle of the page will take the user to the Add Wine form page.
+
+ - Add Wine Form Page - User is able to add detailed information in a series of input fields and dropdown menus to be saved to the database then rendered to the My Cellar page.  Upon submission using the Add Bottle To Cellar button at the bottom of the form the data in the inputs is submitted to the database and the user is taken back to the My Cellar page.
+
+ - Learn About Wine Page - User can see some information about the history of winemaking, see tips about tasting and pronunciation, and more information helpful for a beginner level wine connoisseur.
